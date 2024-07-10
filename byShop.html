@@ -11,7 +11,7 @@
 
 <body class="bg-[url('./assets/bg.jpg')]">
     <header
-        class="fixed top-0 h-24 w-full bg-black flex justify-between items-center px-10 sm:px-24 text-white text-4xl uppercase font-bold">
+        class="fixed top-0 h-24 w-full bg-black/70 flex justify-between items-center px-10 sm:px-24 text-white text-4xl uppercase font-bold">
         <a href="#">Laguna Tech</a>
         <button class="hover:scale-110 duration-300" type="button" data-drawer-target="drawer-navigation"
             data-drawer-show="drawer-navigation" data-drawer-placement="right" aria-controls="drawer-navigation">
@@ -58,13 +58,12 @@
         </div>
     </div>
 
-    <div class="h-full flex flex-col gap-6 mx-10 sm:mx-24 my-10 mt-28">
-        <h2 class="text-[48px] uppercase font-bold text-center">Our Best Seller</h2>
+    <div id="product-container" class="h-full flex flex-col gap-6 mx-10 sm:mx-24 my-10 mt-28">
+        <h2 id="shop-name" class="text-[48px] uppercase font-bold text-center"></h2>
         <div id="best-seller-container" class="flex justify-center flex-wrap"></div>
     </div>
-    <div id="product-container" class="h-full flex flex-col gap-6 mx-10 sm:mx-24"></div>
 
-    <script src="./js/product.js"></script>
+    <script src="./js/shop.js"></script>
     <script src="./js/cart.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
