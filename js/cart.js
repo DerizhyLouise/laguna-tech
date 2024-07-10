@@ -22,13 +22,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <input type="checkbox" value="${product.product.id}" class="product-checkbox mr-2">
                 <img class="object-cover h-32 w-32" src="${product.product.images[0]}">
                 <div class="mx-2 w-full flex flex-col gap-1">
-                    <h3 class="text-xl font-semibold">${product.product.title}</h3>
+                    <h3 class="text-xl font-semibold ellipsis-text">${product.product.title}</h3>
                     <p><span class="line-through text-sm">${product.product.price.toFixed(2)}</span> ${discountedPrice.toFixed(2)}</p>
                     <div class="flex items-center justify-self-end gap-2">
                         <button onclick="decreaseQuantity(${product.product.id})" class="text-xl"><i class="fa-solid fa-minus"></i></button>
                         <input class="w-6 text-center focus:ring-0" value="${product.quantity}">
                         <button onclick="increaseQuantity(${product.product.id})" class="text-xl"><i class="fa-solid fa-plus"></i></button>
                     </div>
+                    <input class="w-full p-1 border-2 border-gray-400" placeholder="Message">
                 </div>
                 <button onclick="removeProduct(${product.product.id})" class="self-start mr-1 mt-1 text-xl duration-300 hover:scale-150"><i class="fa-solid fa-trash"></i></button>
             </div>

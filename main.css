@@ -3,6 +3,15 @@
     scrollbar-color: #888 #f1f1f1;
 }
 
+.ellipsis-text {
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: normal;
+}
+
 .shop-section {
     margin-bottom: 2rem;
 }
