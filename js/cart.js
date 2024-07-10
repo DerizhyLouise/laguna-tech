@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const displayCart = () => {
         productContainerForCart.innerHTML = "";
 
-        const cart = JSON.parse(sessionStorage.getItem("cart"));
+        const cart = JSON.parse(localStorage.getItem("cart"));
         if (!cart) {
             return;
         }
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         productCheckboxes.forEach(checkbox => {
             const productId = parseInt(checkbox.value);
             const product = products.find(product => product.id === productId);
-            const cart = JSON.parse(sessionStorage.getItem("cart"));
+            const cart = JSON.parse(localStorage.getItem("cart"));
             const cartItem = cart.find(item => item.id === productId);
             const quantity = cartItem ? cartItem.quantity : 1;
             const discountedPrice = product.price - (product.price * (product.discount_percentage / 100));
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     const addToCart = async (id) => {
-        let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
         let itemIndex = cart.findIndex(item => item.id === id);
 
         if (itemIndex > -1) {
@@ -126,38 +126,38 @@ document.addEventListener("DOMContentLoaded", async () => {
             cart.push({ id, quantity: 1 });
         }
 
-        sessionStorage.setItem("cart", JSON.stringify(cart));
+        localStorage.setItem("cart", JSON.stringify(cart));
         displayCart();
     }
 
     const removeProduct = (id) => {
-        let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
         cart = cart.filter(product => product.id !== id);
-        sessionStorage.setItem("cart", JSON.stringify(cart));
+        localStorage.setItem("cart", JSON.stringify(cart));
         displayCart();
     };
 
     const removeShop = (shopName) => {
-        let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
         const productsToRemove = products.filter(product => product.shop.name === shopName).map(product => product.id.toString());
         cart = cart.filter(product => !productsToRemove.includes(product.id.toString()));
-        sessionStorage.setItem("cart", JSON.stringify(cart));
+        localStorage.setItem("cart", JSON.stringify(cart));
         displayCart();
     };
 
     const increaseQuantity = (id) => {
-        let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
         let itemIndex = cart.findIndex(item => item.id === id);
 
         if (itemIndex > -1) {
             cart[itemIndex].quantity += 1;
-            sessionStorage.setItem("cart", JSON.stringify(cart));
+            localStorage.setItem("cart", JSON.stringify(cart));
             displayCart();
         }
     }
 
     const decreaseQuantity = (id) => {
-        let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
         let itemIndex = cart.findIndex(item => item.id === id);
 
         if (itemIndex > -1) {
@@ -167,24 +167,24 @@ document.addEventListener("DOMContentLoaded", async () => {
                 return;
             }
 
-            sessionStorage.setItem("cart", JSON.stringify(cart));
+            localStorage.setItem("cart", JSON.stringify(cart));
             displayCart();
         }
     }
 
     const deleteAll = () => {
         const checkedCheckboxes = document.querySelectorAll('.product-checkbox:checked');
-        let cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
         const checkedProductIds = Array.from(checkedCheckboxes).map(checkbox => parseInt(checkbox.value));
 
         cart = cart.filter(item => !checkedProductIds.includes(item.id));
-        sessionStorage.setItem("cart", JSON.stringify(cart));
+        localStorage.setItem("cart", JSON.stringify(cart));
 
         displayCart();
     }
 
     const checkout = () => {
-        const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
         const productCheckboxes = document.querySelectorAll('.product-checkbox');
 
         const itemsToDelete = [];
@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
 
         let updatedCart = cart.filter(item => !itemsToDelete.includes(item.id));
-        sessionStorage.setItem("cart", JSON.stringify(updatedCart));
+        localStorage.setItem("cart", JSON.stringify(updatedCart));
 
         displayCart();
     };

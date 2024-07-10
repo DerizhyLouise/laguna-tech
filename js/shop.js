@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const bestSellerContainer = document.getElementById('best-seller-container');
     const shopNameElement = document.getElementById('shop-name');
 
-    const shopName = sessionStorage.getItem("shop");
+    const shopName = localStorage.getItem("shop");
     const filteredProducts = products.filter(product => product.shop.name === shopName);
 
     shopNameElement.textContent = shopName;

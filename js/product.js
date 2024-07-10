@@ -70,6 +70,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 const navigateTo = (shop) => {
-    sessionStorage.setItem("shop", shop);
+    localStorage.setItem("shop", shop);
     window.location.href = "./byShop.html";
 }
