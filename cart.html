@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laguna Tech</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body class="bg-[url('./assets/bg.jpg')]">
+    <header
+        class="fixed top-0 h-24 w-full bg-black flex justify-between items-center px-10 sm:px-24 text-white text-4xl uppercase font-bold">
+        <a href="./index.html">Laguna Tech</a>
+        <button class="hover:scale-110 duration-300" type="button" data-drawer-target="drawer-navigation"
+            data-drawer-show="drawer-navigation" data-drawer-placement="right" aria-controls="drawer-navigation">
+            <i class="fa-solid fa-basket-shopping"></i>
+        </button>
+    </header>
+
+    <div class="flex flex-col items-center w-full mt-24">
+        <div class="w-9/12">
+            <div class="flex items-center justify-center h-20">
+                <h5 class="text-center font-bold text-4xl uppercase mt-4 pb-4 uppercase">
+                    Shoping Cart</h5>
+            </div>
+            <div class="flex justify-between m-2 p-4 text-xl border-2 border-gray-400 rounded-md">
+                <div class="flex">
+                    <input type="checkbox" id="selectAllCheckbox" class="mr-2" onchange="toggleSelectAll()">
+                    <p>Pilih Semua</p>
+                </div>
+                <button class="text-red-700 hover:font-bold duration-300" onclick="deleteAll()">Hapus</button>
+            </div>
+        </div>
+        <div class="w-9/12">
+            <div class="p-2">
+                <div class="py-4 overflow-y-auto">
+                    <div id="product-container-cart" class="flex flex-col gap-4"></div>
+                </div>
+            </div>
+            <div class="bottom-0 h-24 flex items-center justify-between mx-2">
+                <h5 id="cart-total" class="text-2xl uppercase font-bold mt-4 pb-4">
+                    Total Price: $00.00</h5>
+                <button onclick="checkout()"
+                    class="h-12 w-32 p-2 hover:bg-black hover:text-white duration-300 border-2 border-black flex items-center justify-center font-bold">Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/cart.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+
+</html>
